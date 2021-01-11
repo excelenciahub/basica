@@ -132,6 +132,12 @@
                                     <span> Product </span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="{{ route('admin.contact-us.index') }}">
+                                    <i data-feather="airplay"></i>
+                                    <span> Contact Us </span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                     <!-- End Sidebar -->

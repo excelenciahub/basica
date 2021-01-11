@@ -23,5 +23,6 @@ Route::prefix(ADMIN_PATH)->as('admin.')->group(function() {
         Route::resource('profile', 'ProfileController');
         Route::resource('category', 'CategoryController');
         Route::resource('product', 'ProductController');
+        Route::resource('contact-us', 'ContactUsController');
     });
 });

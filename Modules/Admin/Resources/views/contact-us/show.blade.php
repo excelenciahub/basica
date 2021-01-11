@@ -1,0 +1,1 @@
+<p>{{ $record->message }}</p>
