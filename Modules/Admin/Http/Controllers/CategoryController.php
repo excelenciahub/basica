@@ -36,10 +36,17 @@ class CategoryController extends BaseController
     {
         $request->validate([
             'name' => 'required|unique:categories',
+            'image' => 'required|image',
             'title' => 'required',
             'status' => 'required|in:'.implode(',', status()),
         ]);
         $data = $request->all();
+        if($request->file('image')){
+            $image = $request->file('image');
+            $name = time().'-'.$image->getClientOriginalName();
+            $image->storeAs(CATEGORY_STORAGE_PATH, $name);
+            $data['image'] = $name;
+        }
         Category::create($data);
         $response = ['message'=>'store'];
         return admin_success_response($response);
@@ -76,11 +83,22 @@ class CategoryController extends BaseController
     {
         $request->validate([
             'name' => 'required|unique:categories,name,'.$id,
+            'image' => 'nullable|image',
             'title' => 'required',
             'status' => 'required|in:'.implode(',', status()),
         ]);
         $data = $request->all();
-        Category::find($id)->update($data);
+        $category = Category::find($id);
+        if($request->file('image')){
+            $image = $request->file('image');
+            $name = time().'-'.$image->getClientOriginalName();
+            $image->storeAs(CATEGORY_STORAGE_PATH, $name);
+            $data['image'] = $name;
+            if($category->image!='' && Storage::exists(CATEGORY_STORAGE_PATH.$category->image)){
+                Storage::delete(CATEGORY_STORAGE_PATH.$category->image);
+            }
+        }
+        $category->update($data);
         $response = ['message'=>'update'];
         return admin_success_response($response);
     }
@@ -92,7 +110,11 @@ class CategoryController extends BaseController
      */
     public function destroy($id)
     {
-        Category::find($id)->delete();
+        $category = Category::find($id);
+        if($category->image!='' && Storage::exists(CATEGORY_STORAGE_PATH.$category->image)){
+            Storage::delete(CATEGORY_STORAGE_PATH.$category->image);
+        }
+        $category->delete();
         $response = ['message'=>'destroy'];
         return admin_success_response($response);
     }

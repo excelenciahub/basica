@@ -25,6 +25,20 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="image">Image <span class="text-danger">*</span></label>
+                {{ Form::file('image', ['class'=>'dropify']) }}
+                <div class="invalid-feedback">
+                    Please provide valid image.
+                </div>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+        </div>
+    </div>
     <label>SEO</label>
     <div class="form-group">
         <label for="title">Title <span class="text-danger">*</span></label>

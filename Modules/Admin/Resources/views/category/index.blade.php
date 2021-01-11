@@ -77,6 +77,20 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="image">Image <span class="text-danger">*</span></label>
+                                {{ Form::file('image', ['data-plugins'=>'dropify']) }}
+                                <div class="invalid-feedback">
+                                    Please provide valid image.
+                                </div>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <label>SEO</label>
                     <div class="form-group">
                         <label for="title">Title <span class="text-danger">*</span></label>
@@ -141,4 +155,19 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+@endsection
+@section('styles')
+<link href="{{ admin_plugin('dropify/dropify.min.css') }}" rel="stylesheet" type="text/css" />
+@endsection
+@section('scripts')
+<script src="{{ admin_plugin('dropzone/dropzone.min.js') }}"></script>
+<script src="{{ admin_plugin('dropify/dropify.min.js') }}"></script>
+<script src="{{ admin_js('form-fileuploads.init.js') }}"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $( "#category-edit-modal" ).on('shown.bs.modal', function(){
+            $('.dropify').dropify();
+        });
+    });
+</script>
 @endsection

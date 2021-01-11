@@ -53,58 +53,58 @@
             </div>
             <div class="modal-body">
                 {!! Form::open(['route' => 'admin.product.store', 'files'=>true, 'novalidate' => 'novalidate', 'class'=>'validation']) !!}
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="status">Status <span class="text-danger">*</span></label>
-                            {{ Form::select('status', status(), old('status'), ['class'=>'form-control', 'required'=>true]) }}
-                            <div class="invalid-feedback">
-                                Please provide valid status.
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="status">Status <span class="text-danger">*</span></label>
+                                {{ Form::select('status', status(), old('status'), ['class'=>'form-control', 'required'=>true]) }}
+                                <div class="invalid-feedback">
+                                    Please provide valid status.
+                                </div>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
                             </div>
-                            <div class="valid-feedback">
-                                Looks good!
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="category_id">Category <span class="text-danger">*</span></label>
+                                {{ Form::select('category_id', [''=>'']+$categories, old('category_id'), ['class'=>'form-control', 'id'=>'category_id', 'required'=>true]) }}
+                                <div class="invalid-feedback">
+                                    Please provide valid category.
+                                </div>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="category_id">Category <span class="text-danger">*</span></label>
-                            {{ Form::select('category_id', [''=>'']+$categories, old('category_id'), ['class'=>'form-control', 'id'=>'category_id', 'required'=>true]) }}
-                            <div class="invalid-feedback">
-                                Please provide valid category.
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="name">Name <span class="text-danger">*</span></label>
+                                {{ Form::text('name', old('name'), ['class'=>'form-control', 'placeholder'=>'Enter name', 'id'=>'name', 'required'=>true]) }}
+                                <div class="invalid-feedback">
+                                    Please provide valid name.
+                                </div>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
                             </div>
-                            <div class="valid-feedback">
-                                Looks good!
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="image">Image <span class="text-danger">*</span></label>
+                                {{ Form::file('image', ['data-plugins'=>'dropify']) }}
+                                <div class="invalid-feedback">
+                                    Please provide valid image.
+                                </div>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="name">Name <span class="text-danger">*</span></label>
-                            {{ Form::text('name', old('name'), ['class'=>'form-control', 'placeholder'=>'Enter name', 'id'=>'name', 'required'=>true]) }}
-                            <div class="invalid-feedback">
-                                Please provide valid name.
-                            </div>
-                            <div class="valid-feedback">
-                                Looks good!
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="image">Image <span class="text-danger">*</span></label>
-                            {{ Form::file('image', ['data-plugins'=>'dropify']) }}
-                            <div class="invalid-feedback">
-                                Please provide valid image.
-                            </div>
-                            <div class="valid-feedback">
-                                Looks good!
-                            </div>
-                        </div>
-                    </div>
-                </div>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
