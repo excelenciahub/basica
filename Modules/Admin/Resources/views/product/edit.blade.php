@@ -1,4 +1,4 @@
-{!! Form::model($record, ['route' => ['admin.category.update', $record->id], 'method' => 'PATCH', 'novalidate' => 'novalidate', 'class'=>'validation']) !!}
+{!! Form::model($record, ['route' => ['admin.product.update', $record->id], 'method' => 'PATCH', 'files'=>true, 'novalidate' => 'novalidate', 'class'=>'validation']) !!}
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
@@ -14,10 +14,50 @@
         </div>
         <div class="col-md-6">
             <div class="form-group">
+                <label for="category_id">Category <span class="text-danger">*</span></label>
+                {{ Form::select('category_id', [''=>'']+$categories, old('category_id'), ['class'=>'form-control', 'id'=>'category_id', 'required'=>true]) }}
+                <div class="invalid-feedback">
+                    Please provide valid category.
+                </div>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
                 <label for="name">Name <span class="text-danger">*</span></label>
                 {{ Form::text('name', old('name'), ['class'=>'form-control', 'placeholder'=>'Enter name', 'id'=>'name', 'required'=>true]) }}
                 <div class="invalid-feedback">
                     Please provide valid name.
+                </div>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="image">Image <span class="text-danger">*</span></label>
+                {{ Form::file('image', ['class'=>'dropify', 'data-default-file'=>$record->image_url]) }}
+                <div class="invalid-feedback">
+                    Please provide valid image.
+                </div>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="detail">Detail <span class="text-danger">*</span></label>
+                {{ Form::textarea('detail', old('detail'), ['class'=>'form-control detail', 'placeholder'=>'Enter detail', 'required'=>true]) }}
+                <div class="invalid-feedback">
+                    Please provide valid status.
                 </div>
                 <div class="valid-feedback">
                     Looks good!

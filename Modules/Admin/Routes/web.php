@@ -22,5 +22,6 @@ Route::prefix(ADMIN_PATH)->as('admin.')->group(function() {
         Route::post('profile/update-password', 'ProfileController@update_password')->name('profile.update-password');
         Route::resource('profile', 'ProfileController');
         Route::resource('category', 'CategoryController');
+        Route::resource('product', 'ProductController');
     });
 });
