@@ -4,3 +4,11 @@
 .error{
     color: #f1556c;
 }
+.status-Enabled{
+    color: #0aa70a;
+    font-weight: bold;
+}
+.status-Disabled{
+    color: #a96f07;
+    font-weight: bold;
+}

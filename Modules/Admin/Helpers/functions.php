@@ -22,3 +22,7 @@ function admin_status_color($type){
     $types = ['Pending'=>'warning', 'Approved'=>'primary', 'Assigned'=>'info', 'On Hold'=>'warning', 'Picked Up'=>'primary', 'Delivered'=>'success', 'Rejected'=>'danger', 'Success'=>'success', 'Cancelled'=>'danger'];
     return $types[$type];
 }
+function status(){
+    $status = ['Enabled', 'Disabled'];
+    return array_combine($status, $status);
+}

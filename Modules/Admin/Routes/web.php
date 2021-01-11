@@ -21,5 +21,6 @@ Route::prefix(ADMIN_PATH)->as('admin.')->group(function() {
         Route::get('profile/change-password', 'ProfileController@change_password')->name('profile.change-password');
         Route::post('profile/update-password', 'ProfileController@update_password')->name('profile.update-password');
         Route::resource('profile', 'ProfileController');
+        Route::resource('category', 'CategoryController');
     });
 });

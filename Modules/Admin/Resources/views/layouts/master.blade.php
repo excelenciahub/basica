@@ -120,6 +120,12 @@
                                     <span> Dashboard </span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="{{ route('admin.category.index') }}">
+                                    <i data-feather="airplay"></i>
+                                    <span> Category </span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                     <!-- End Sidebar -->
