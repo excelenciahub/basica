@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Modules\Admin\Entities\Category;
 use Modules\Admin\Entities\Product;
 
-class HomeController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Show the application dashboard.
@@ -16,9 +16,14 @@ class HomeController extends Controller
     public function index()
     {
         $view['categories'] = Category::whereStatus('Enabled')->orderBy('name')->get();
-        $view['products'] = Product::whereStatus('Enabled')->whereHas('category', function($q){
-            $q->whereStatus('Enabled');
-        })->latest()->limit(6)->get();
-        return view('home')->with($view);
+        return view('categories')->with($view);
+    }
+
+    public function show($slug)
+    {
+        $view['category'] = Category::whereStatus('Enabled')->with(['products' => function($q){
+            $q->whereStatus('Enabled')->latest();
+        }])->first();
+        return view('category')->with($view);
     }
 }
