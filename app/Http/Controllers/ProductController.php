@@ -25,6 +25,7 @@ class ProductController extends Controller
         $view['product'] = Product::whereStatus('Enabled')->whereHas('category', function($q){
             $q->whereStatus('Enabled');
         })->whereSlug($slug)->first();
+        $view['related_products'] = Product::where(['category_id'=>$view['product']->category_id])->where('id', '!=', $view['product']->id)->inRandomOrder()->limit(4)->get();
         return view('product')->with($view);
     }
 }

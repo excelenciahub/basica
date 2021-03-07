@@ -11,8 +11,9 @@ class Category extends Model
     public function products(){
         return $this->hasMany(Product::class);
     }
-    public function setSlugAttribute(){
-        $this->slug = str_slug($this->name);
+    public function setNameAttribute($value) {
+        $this->attributes['name'] = $value;
+        $this->attributes['slug'] = str_slug($value);
     }
     public function getImageUrlAttribute(){
         return $this->image==''?'':url(CATEGORY_STORAGE_URL.$this->image);

@@ -11,8 +11,9 @@ class Product extends Model
     public function category(){
         return $this->belongsTo(Category::class);
     }
-    public function setSlugAttribute(){
-        $this->slug = str_slug($this->name);
+    public function setNameAttribute($value) {
+        $this->attributes['name'] = $value;
+        $this->attributes['slug'] = str_slug($value);
     }
     public function getImageUrlAttribute(){
         return $this->image==''?'':url(PRODUCT_STORAGE_URL.$this->image);

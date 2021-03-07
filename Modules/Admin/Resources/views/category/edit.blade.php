@@ -29,7 +29,7 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label for="image">Image <span class="text-danger">*</span></label>
-                {{ Form::file('image', ['class'=>'dropify']) }}
+                {{ Form::file('image', ['class'=>'dropify', 'data-default-file'=>$record->image_url]) }}
                 <div class="invalid-feedback">
                     Please provide valid image.
                 </div>

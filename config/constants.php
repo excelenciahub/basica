@@ -6,3 +6,4 @@
     if(!defined('FRONT_RECORD_PER_PAGE')) define('FRONT_RECORD_PER_PAGE', 10);
     if (!defined('ADMIN_PATH')) define('ADMIN_PATH', 'admin');
     if(!defined('ADMIN_HOME_URL')) define('ADMIN_HOME_URL', ADMIN_PATH.'/dashboard');
+    if(!defined('ADMIN_EMAIL')) define('ADMIN_EMAIL', env('ADMIN_EMAIL'));

@@ -14,7 +14,7 @@ class ContactUsController extends BaseController
      */
     public function index()
     {
-        $view['records'] = ContactUs::get();
+        $view['records'] = ContactUs::latest()->get();
         return view('admin::contact-us.index')->with($view);
     }
 

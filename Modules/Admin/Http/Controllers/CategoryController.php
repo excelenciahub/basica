@@ -5,6 +5,7 @@ namespace Modules\Admin\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Modules\Admin\Entities\Category;
+use Storage;
 
 class CategoryController extends BaseController
 {

@@ -23,7 +23,7 @@ class CategoryController extends Controller
     {
         $view['category'] = Category::whereStatus('Enabled')->with(['products' => function($q){
             $q->whereStatus('Enabled')->latest();
-        }])->first();
+        }])->where(['slug'=>$slug])->first();
         return view('category')->with($view);
     }
 }
